@@ -1,3 +1,7 @@
+package League.src;
+
+import java.awt.event.KeyListener;
+
 import javax.swing.JFrame;
 
 public class LeagueInvaders {
@@ -18,5 +22,6 @@ void setup() {
 frame.add(gamep);
 frame.setSize(WIDTH, HEIGHT);
 frame.setVisible(true);
+frame.addKeyListener(gamep);
 }
 }
