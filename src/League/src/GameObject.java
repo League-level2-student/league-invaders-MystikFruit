@@ -1,18 +1,18 @@
 package League.src;
 
-public class GameObject {
-int x;
+public class GameObject{
+int X;
 int y ;
-int width;
+int Width;
 int height;
 int speed;
 boolean isActive;
-public GameObject(){
-	x = 5;
-	y = 5;
-	width = 5;
-	height = 5;
-	speed = 0;
+public GameObject(int X, int Y, int Width, int Height){
+this.X=X;
+this.y=Y;
+this.Width=Width;
+this.height=Height;
+	speed = 7;
 	isActive = true;
 	}
 
