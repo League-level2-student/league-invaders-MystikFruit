@@ -2,10 +2,12 @@ package League.src;
 
 import java.awt.Graphics;
 import java.awt.Robot;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class ObjectManager{
+public class ObjectManager implements ActionListener{
 	Rocketship rocket;
 	ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 	ArrayList<Alien> alien = new ArrayList<Alien>();
@@ -15,6 +17,7 @@ public ObjectManager(Rocketship rocket) {
 }
 void addProjectile(Projectile projectile) {
 	projectiles.add(projectile);
+	
 }
 void addAlien() {
 	alien.add(new Alien(random.nextInt(LeagueInvaders.WIDTH),0,50,50));
@@ -48,5 +51,10 @@ void purgeObjects() {
 	for (int i = 0; i < alien.size(); i++) {
 		
 	}
+}
+@Override
+public void actionPerformed(ActionEvent arg0) {
+	addAlien();
+	
 }
 }
