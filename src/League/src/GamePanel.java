@@ -24,13 +24,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     Timer alienSpawn;
     int currentState = MENU;
     Rocketship ship = new Rocketship(250, 600, 50, 50);
+    ObjectManager objectman = new ObjectManager(ship);
 	public GamePanel() {
 	    frameDraw = new Timer(1000/60,this);
 	    frameDraw.start();
 	    if (needImage) {
 	        loadImage ("space.png");
 	    }
+
 	}
+	
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
@@ -73,10 +76,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
  }
  void drawGameState(Graphics g) {
 	 if (gotImage) {
-			g.drawImage(image, getX(), getY(), WIDTH, HEIGHT, null);
+			g.drawImage(image, getX(), getY(), LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT, null);
 		} else {
 			g.setColor(Color.BLUE);
-			g.fillRect(getX(), getY(), WIDTH, HEIGHT);
+			g.fillRect(getX(), getY(), LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
 		}
 	 
 	 ship.draw(g);
@@ -114,8 +117,8 @@ public void actionPerformed(ActionEvent arg0) {
 	repaint();
 }
 void startGame() {
-	// alienSpawn = new Timer(1000 , ObjectManager);
-	  //  alienSpawn.start();
+	 alienSpawn = new Timer(1000 , objectman);
+	    alienSpawn.start();
 }
 @Override
 public void keyPressed(KeyEvent e) {
@@ -140,6 +143,9 @@ public void keyPressed(KeyEvent e) {
 	if (e.getKeyCode()==KeyEvent.VK_LEFT) {
 		ship.left();
 	}
+	if (e.getKeyCode()==KeyEvent.VK_SPACE) {
+		ObjectManager.addProjectile(ship.getProjectile());
+}
 }
 @Override
 public void keyReleased(KeyEvent e) {

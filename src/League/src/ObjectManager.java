@@ -9,13 +9,14 @@ import java.util.Random;
 
 public class ObjectManager implements ActionListener{
 	Rocketship rocket;
-	ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+	
+	static ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 	ArrayList<Alien> alien = new ArrayList<Alien>();
 	Random random = new Random();
 public ObjectManager(Rocketship rocket) {
 	this.rocket=rocket;
 }
-void addProjectile(Projectile projectile) {
+static void addProjectile(Projectile projectile) {
 	projectiles.add(projectile);
 	
 }
