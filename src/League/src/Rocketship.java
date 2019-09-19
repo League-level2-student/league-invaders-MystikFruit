@@ -8,8 +8,6 @@ import javax.imageio.ImageIO;
 
 public class Rocketship extends GameObject {
 	void draw(Graphics g) {
-        g.setColor(Color.BLUE);
-        g.fillRect(X, y, Width, height);
         if (gotImage) {
         	g.drawImage(image, X, y, Width, height, null);
         } else {

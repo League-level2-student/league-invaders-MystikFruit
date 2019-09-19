@@ -57,7 +57,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	 
  }
  void updateGameState() { 
-	 
+	 objectman.update();
  }
  void updateEndState()  {  
 	 
@@ -76,13 +76,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
  }
  void drawGameState(Graphics g) {
 	 if (gotImage) {
-			g.drawImage(image, getX(), getY(), LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT, null);
+			g.drawImage(image, 0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT, null);
 		} else {
-			g.setColor(Color.BLUE);
-			g.fillRect(getX(), getY(), LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+			g.setColor(Color.GREEN);
+			g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
 		}
 	 
-	 ship.draw(g);
+	 objectman.draw(g);
  }
  
  void loadImage(String imageFile) {

@@ -41,10 +41,10 @@ void update() {
 void draw(Graphics g) {
 	rocket.draw(g);
 	for (int i = 0; i < alien.size(); i++) {
-		draw(g);
+		alien.get(i).draw(g);
 	}
 	for (int i = 0; i < projectiles.size(); i++) {
-		draw(g);
+		projectiles.get(i).draw(g);
 	}
 }
 
