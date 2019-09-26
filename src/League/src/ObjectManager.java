@@ -35,7 +35,8 @@ void update() {
 			alien.get(i).isActive=false;
 		} 
 }
-
+purgeObjects();
+checkCollision();
 }
 
 void draw(Graphics g) {
@@ -56,6 +57,17 @@ void purgeObjects() {
 @Override
 public void actionPerformed(ActionEvent arg0) {
 	addAlien();
+	
+}
+
+void checkCollision() {
+	for (int i = 0; i < alien.size(); i++) {
+		if (rocket.collisionBox.intersects(alien.get(i).collisionBox)) {
+			alien.get(i).isActive = false;
+			//rocket.collisionBox.intersects(alien.collisionBox);
+		}
+
+	}
 	
 }
 }

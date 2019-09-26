@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 public class Alien extends GameObject{
 void update() {
 	y+=speed;
+    super.update();
 }
 public static BufferedImage image;
 public static boolean needImage = true;

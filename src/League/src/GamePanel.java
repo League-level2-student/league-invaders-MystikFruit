@@ -19,6 +19,10 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer frameDraw;
 	final int MENU = 0;
+	boolean up;
+	boolean down;
+	boolean left;
+	boolean right;
     final int GAME = 1;
     final int END = 2;
     Timer alienSpawn;
@@ -129,11 +133,16 @@ public void keyPressed(KeyEvent e) {
 	    	startGame();
 	        currentState++;
 	    }
+	    
 	}
+	
 	if (e.getKeyCode()==KeyEvent.VK_UP) {
-	    System.out.println("UP");
-	    ship.up();
-}
+		up = true;
+	}
+	if (up=true) {
+		  ship.up();
+		    
+	}
 	if (e.getKeyCode()==KeyEvent.VK_DOWN) {
 		ship.down();
 	}
