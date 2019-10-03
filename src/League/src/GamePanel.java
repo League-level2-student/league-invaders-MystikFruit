@@ -137,19 +137,27 @@ public void keyPressed(KeyEvent e) {
 	}
 	
 	if (e.getKeyCode()==KeyEvent.VK_UP) {
-		up = true;
+		up=true;
 	}
-	if (up=true) {
-		  ship.up();
-		    
+	if (up==true) {
+		ship.up();
 	}
 	if (e.getKeyCode()==KeyEvent.VK_DOWN) {
+		down = true;
+	}
+	if (down==true) {
 		ship.down();
 	}
 	if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+		right = true;
+	}
+	if (right==true) {
 		ship.right();
 	}
 	if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+		left=true;
+	}
+	if(left==true) {
 		ship.left();
 	}
 	if (e.getKeyCode()==KeyEvent.VK_SPACE) {

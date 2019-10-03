@@ -13,6 +13,8 @@ public class ObjectManager implements ActionListener{
 	static ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 	ArrayList<Alien> alien = new ArrayList<Alien>();
 	Random random = new Random();
+	int score = 0;
+	
 public ObjectManager(Rocketship rocket) {
 	this.rocket=rocket;
 }

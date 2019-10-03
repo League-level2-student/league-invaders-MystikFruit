@@ -43,7 +43,7 @@ public void up() {
 	}
 }
 public void down() {
-	if (y<LeagueInvaders.HEIGHT-50) {
+	if (y<LeagueInvaders.HEIGHT-50){
 	y+=speed;
 }
 }
