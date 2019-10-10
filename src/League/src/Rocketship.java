@@ -43,12 +43,12 @@ public void up() {
 	}
 }
 public void down() {
-	if (y<LeagueInvaders.HEIGHT-50){
+	if (y<LeagueInvaders.HEIGHT-10){
 	y+=speed;
 }
 }
 public void right() {
-	if (X<LeagueInvaders.WIDTH-50) {
+	if (X<LeagueInvaders.WIDTH-10) {
 		X+=speed;
 	}
 }

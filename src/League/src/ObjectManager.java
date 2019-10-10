@@ -28,17 +28,16 @@ void addAlien() {
 void update() {
 	for (int i = 0; i < alien.size(); i++) {
 		alien.get(i).update();	
+		if(alien.get(i).y>LeagueInvaders.HEIGHT) {
+			alien.get(i).isActive=false;
+		}
 	}
 	for (int i = 0; i < projectiles.size(); i++) {
 		projectiles.get(i).update();
 	}
-	if(LeagueInvaders.HEIGHT<=0||LeagueInvaders.HEIGHT>=700) {
-		for (int i = 0; i < alien.size(); i++) {
-			alien.get(i).isActive=false;
-		} 
-}
-purgeObjects();
 checkCollision();
+purgeObjects();
+rocket.update();
 }
 
 void draw(Graphics g) {
@@ -53,7 +52,9 @@ void draw(Graphics g) {
 
 void purgeObjects() {
 	for (int i = 0; i < alien.size(); i++) {
-		
+		if(alien.get(i).isActive==false) {
+		alien.remove(i);
+		}
 	}
 }
 @Override
@@ -66,7 +67,7 @@ void checkCollision() {
 	for (int i = 0; i < alien.size(); i++) {
 		if (rocket.collisionBox.intersects(alien.get(i).collisionBox)) {
 			alien.get(i).isActive = false;
-			//rocket.collisionBox.intersects(alien.collisionBox);
+			
 		}
 
 	}

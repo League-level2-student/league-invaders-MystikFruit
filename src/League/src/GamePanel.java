@@ -62,6 +62,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
  }
  void updateGameState() { 
 	 objectman.update();
+	 move();
  }
  void updateEndState()  {  
 	 
@@ -69,7 +70,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
  
  void drawMenuState(Graphics g) { 
 	 g.setColor(Color.BLACK);
-	 g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+	 //g.fillRect(0, 0, down = true,LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
 	 g.setFont(titleFont);
 	 g.setColor(Color.GREEN);
 	 g.drawString("League Invaders", 50, 60);
@@ -124,6 +125,22 @@ void startGame() {
 	 alienSpawn = new Timer(1000 , objectman);
 	    alienSpawn.start();
 }
+
+void move() {
+	if (up==true) {
+		ship.up();
+	}
+	if (down==true) {
+		ship.down();
+	}
+	if (right==true) {
+		ship.right();
+	}
+	if(left==true) {
+		ship.left();
+	}
+}
+	
 @Override
 public void keyPressed(KeyEvent e) {
 	if (e.getKeyCode()==KeyEvent.VK_ENTER) {
@@ -135,39 +152,40 @@ public void keyPressed(KeyEvent e) {
 	    }
 	    
 	}
-	
 	if (e.getKeyCode()==KeyEvent.VK_UP) {
 		up=true;
 	}
-	if (up==true) {
-		ship.up();
-	}
+	
 	if (e.getKeyCode()==KeyEvent.VK_DOWN) {
 		down = true;
 	}
-	if (down==true) {
-		ship.down();
-	}
+	
 	if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
 		right = true;
 	}
-	if (right==true) {
-		ship.right();
-	}
+	
 	if (e.getKeyCode()==KeyEvent.VK_LEFT) {
 		left=true;
 	}
-	if(left==true) {
-		ship.left();
-	}
+	
 	if (e.getKeyCode()==KeyEvent.VK_SPACE) {
 		ObjectManager.addProjectile(ship.getProjectile());
 }
 }
 @Override
 public void keyReleased(KeyEvent e) {
-	// TODO Auto-generated method stub
-	
+	if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+		left=false;
+	}
+	if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+		right=false;
+	}
+	if (e.getKeyCode()==KeyEvent.VK_UP) {
+		up=false;
+	}
+	if (e.getKeyCode()==KeyEvent.VK_DOWN) {
+		down=false;
+	}
 }
 @Override
 public void keyTyped(KeyEvent e) {

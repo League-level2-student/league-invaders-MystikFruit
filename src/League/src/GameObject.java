@@ -15,7 +15,7 @@ this.X=X;
 this.y=Y;
 this.Width=Width;
 this.height=Height;
-	speed = 7;
+	speed = 3;
 	isActive = true;
 	}
 
