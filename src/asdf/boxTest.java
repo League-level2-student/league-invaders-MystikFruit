@@ -4,8 +4,6 @@ import java.awt.Component;
 
 import javax.swing.JFrame;
 
-import League.src.box.GamePanel;
-
 public class boxTest {	
 	public static final int WIDTH = 900;
 	public static final int HEIGHT = 600;
