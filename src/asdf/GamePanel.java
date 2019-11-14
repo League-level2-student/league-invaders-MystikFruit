@@ -11,14 +11,22 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import League.src.ObjectManager;
+import League.src.Rocketship;
+
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	final int INSTRUCT = -1;
 	final int MENU = 0;
 	final int GAME = 1;
 	final int END = 2;
+	boolean up;
+	boolean down;
+	boolean left;
+	boolean right;
 	int currentState = MENU;
 	Timer frameDraw;
-		
+	PlayerOne player = new PlayerOne(250, 600, 50, 50);
+    ObjectManagerB objectman = new ObjectManagerB(player);
 	   public GamePanel(){
 		   frameDraw = new Timer(1000/60,this);
 		    frameDraw.start();  
@@ -42,8 +50,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.fillRect(0, 0, 900, 600);
 		g.setColor(Color.BLACK);
 		g.fillRect(20, 20, 300, 50 );
+		g.setColor(Color.RED);
+		g.fillRect(25,25, 290, 40);
 		g.setColor(Color.GREEN);
 		g.fillRect(25, 25, 290, 40 );
+		g.setColor(Color.BLACK);
+		g.fillRect(580, 20, 300, 50 );
+		g.setColor(Color.RED);
+		g.fillRect(585,25, 290, 40);
+		g.setColor(Color.GREEN);
+		g.fillRect(585, 25, 290, 40 );
+		 objectman.draw(g);
 	}
 	void drawMenu(Graphics g) {
 		g.setColor(Color.WHITE);
@@ -75,7 +92,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 	}
 	void updateGame() {
-		
+		 objectman.update();
+		 move();
 	}
 	void updateEnd() {
 		
@@ -120,10 +138,51 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 				currentState = MENU;
 			}
 		}
+		if (e.getKeyCode()==KeyEvent.VK_UP) {
+			up=true;
+		}
+		
+		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
+			down = true;
+		}
+		
+		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			right = true;
+		}
+		
+		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+			left=true;
+		}
+	}
+	
+	public void move() {
+		if (up==true) {
+			player.up();
+		}
+		if (down==true) {
+			player.down();
+		}
+		if (right==true) {
+			player.right();
+		}
+		if(left==true) {
+			player.left();
+		}
 	}
 	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+			left=false;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			right=false;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_UP) {
+			up=false;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
+			down=false;
+		}
 		
 	}
 	@Override
