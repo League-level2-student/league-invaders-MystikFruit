@@ -25,8 +25,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	boolean right;
 	int currentState = MENU;
 	Timer frameDraw;
-	PlayerOne player = new PlayerOne(250, 600, 50, 50);
-    ObjectManagerB objectman = new ObjectManagerB(player);
+	PlayerOne player = new PlayerOne(150, 300, 170, 170);
+    ObjectManagerB objectmanB = new ObjectManagerB(player);
 	   public GamePanel(){
 		   frameDraw = new Timer(1000/60,this);
 		    frameDraw.start();  
@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.fillRect(585,25, 290, 40);
 		g.setColor(Color.GREEN);
 		g.fillRect(585, 25, 290, 40 );
-		 objectman.draw(g);
+		objectmanB.draw(g);
 	}
 	void drawMenu(Graphics g) {
 		g.setColor(Color.WHITE);
@@ -92,7 +92,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 	}
 	void updateGame() {
-		 objectman.update();
+	// player.update();
 		 move();
 	}
 	void updateEnd() {
@@ -138,26 +138,26 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 				currentState = MENU;
 			}
 		}
-		if (e.getKeyCode()==KeyEvent.VK_UP) {
+		if (e.getKeyCode()==KeyEvent.VK_W) {
 			up=true;
 		}
 		
-		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
+		if (e.getKeyCode()==KeyEvent.VK_S) {
 			down = true;
 		}
 		
-		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+		if (e.getKeyCode()==KeyEvent.VK_D) {
 			right = true;
 		}
 		
-		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+		if (e.getKeyCode()==KeyEvent.VK_A) {
 			left=true;
 		}
 	}
 	
 	public void move() {
 		if (up==true) {
-			player.up();
+			player.jump();
 		}
 		if (down==true) {
 			player.down();
@@ -171,16 +171,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+		if (e.getKeyCode()==KeyEvent.VK_A) {
 			left=false;
 		}
-		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+		if (e.getKeyCode()==KeyEvent.VK_D) {
 			right=false;
 		}
-		if (e.getKeyCode()==KeyEvent.VK_UP) {
+		if (e.getKeyCode()==KeyEvent.VK_W) {
 			up=false;
 		}
-		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
+		if (e.getKeyCode()==KeyEvent.VK_S) {
 			down=false;
 		}
 		
