@@ -25,18 +25,20 @@ public class PlayerOne extends GameObjectB {
 	}
 
 	public void down() {
-		// TODO Auto-generated method stub
+		Height=85;
+		Y=385;
 		
 	}
 
 	public void right() {
-		// TODO Auto-generated method stub
-		
+		if (X>=0) {
+			X+=speed;
+		}	
 	}
 
-	public void jump() {
-		// TODO Auto-generated method stub
+	//public void jump() {
+
 		
-	}
+	//}
 
 }
