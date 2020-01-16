@@ -23,6 +23,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	boolean down;
 	boolean left;
 	boolean right;
+	boolean punch;
 	float YVelocity = 0;
 	double gravity = .2;
 	boolean jEnd = false;
@@ -38,7 +39,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	   }
 	Font Start = new Font("Arial", Font.PLAIN, 24);
 	
-	@Override
 	public void paintComponent(Graphics g) {
 		if(currentState == MENU){
 		    drawMenu(g);
@@ -104,7 +104,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	void updateGame() {
 	// player.update();
-		 move();
+		// move();
 	}
 	void updateEnd() {
 		
@@ -112,7 +112,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	void updateInstruct() {
 		
 	}
-	@Override
 	public void actionPerformed(ActionEvent arg0) {
 			if(currentState == MENU){
 			    updateMenu();
@@ -164,9 +163,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_A) {
 			left=true;
 		}
+		
+		if (e.getKeyCode()==KeyEvent.VK_C) {
+			punch=true;
+			System.out.println(123);
+		}
 	}
 	
-	public void move() {
+	public void move(Graphics g) {
 		if (up==true) {
 			jump();
 		}
@@ -179,6 +183,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if(left==true) {
 			player.left();
 		}
+	//	if(punch==true) {
+		//	player.punch();
+		///	}
+	
 	}
 	public void jump() {
 		if(player.Y<=100) {
@@ -195,6 +203,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			jEnd = false;
 		}
 	}
+	
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode()==KeyEvent.VK_A) {
