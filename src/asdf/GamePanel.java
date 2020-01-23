@@ -103,8 +103,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 	}
 	void updateGame() {
-	// player.update();
-		// move();
+	player.update();
+		move();
 	}
 	void updateEnd() {
 		
@@ -149,7 +149,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			}
 		}
 		if (e.getKeyCode()==KeyEvent.VK_W) {
-			up=true;
+			player.up=true;
 		}
 		
 		if (e.getKeyCode()==KeyEvent.VK_S) {
@@ -165,12 +165,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		}
 		
 		if (e.getKeyCode()==KeyEvent.VK_C) {
-			punch=true;
-			System.out.println(123);
+			player.fist=true;
 		}
 	}
 	
-	public void move(Graphics g) {
+	public void move() {
 		if (up==true) {
 			jump();
 		}
@@ -219,6 +218,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			down=false;
 			player.Height=170;
 			player.Y=300;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_C) {
+			player.fist=false;
 		}
 		
 	}
