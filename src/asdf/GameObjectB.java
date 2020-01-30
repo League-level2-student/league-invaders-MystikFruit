@@ -5,10 +5,6 @@ int X;
 int Y;
 int Height;
 int Width;
-int X2;
-int Y2;
-int Height2;
-int Width2;
 int speed;
 public GameObjectB(int X, int Y, int Height, int Width) {
 	this.X=X;
@@ -17,6 +13,7 @@ public GameObjectB(int X, int Y, int Height, int Width) {
 	this.Height=Height;
 	speed = 5;
 }
+
 public void update() {
 	
 }

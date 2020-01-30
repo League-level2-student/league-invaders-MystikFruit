@@ -31,7 +31,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Timer frameDraw;
 	PlayerOne player = new PlayerOne(150, 300, 170, 170);
 	PlayerTwo player2 = new PlayerTwo(500, 300, 170, 170);
-    ObjectManagerB objectmanB = new ObjectManagerB(player, player2);
+    ObjectManagerB objectmanB = new ObjectManagerB(player);
+    ObjectManagerB2 objectmanB2 = new ObjectManagerB2(player2);
     
 	   public GamePanel(){
 		   frameDraw = new Timer(1000/60,this);
@@ -53,6 +54,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	void drawGame(Graphics g) {
 		YVelocity += gravity;
 		player.Y = (int) (player.Y + YVelocity);
+	//	player2.Y2 = (int) (player2.Y2 + YVelocity); 
 		if(player.Y>300) {
 			gravity = 0;
 			YVelocity = 0;
@@ -72,6 +74,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.setColor(Color.GREEN);
 		g.fillRect(585, 25, 290, 40 );
 		objectmanB.draw(g);
+		objectmanB2.draw2(g);
 	}
 	void drawMenu(Graphics g) {
 		g.setColor(Color.WHITE);
@@ -103,6 +106,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 	}
 	void updateGame() {
+	player2.update();
 	player.update();
 		move();
 	}
@@ -167,6 +171,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_C) {
 			player.fist=true;
 		}
+		if (e.getKeyCode()==KeyEvent.VK_V&&player.Height<170) {
+			player.crouch=true;
+		}
 	}
 	
 	public void move() {
@@ -221,6 +228,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		}
 		if (e.getKeyCode()==KeyEvent.VK_C) {
 			player.fist=false;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_V) {
+			player.crouch=false;
 		}
 		
 	}
