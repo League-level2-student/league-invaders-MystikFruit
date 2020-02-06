@@ -28,13 +28,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	boolean down2;
 	boolean left2;
 	boolean right2;
+	boolean punch2;
 	float YVelocity = 0;
 	double gravity = .2;
 	boolean jEnd = false;
 	int currentState = MENU;
 	Timer frameDraw;
-	PlayerOne player = new PlayerOne(150, 300, 170, 170);
-	PlayerTwo player2 = new PlayerTwo(550, 300, 170, 170);
+	PlayerOne player = new PlayerOne(150, 300, 200, 200);
+	PlayerTwo player2 = new PlayerTwo(550, 300, 200, 200);
     ObjectManagerB objectmanB = new ObjectManagerB(player);
     ObjectManagerB2 objectmanB2 = new ObjectManagerB2(player2);
     
@@ -175,11 +176,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_C) {
 			player.fist=true;
 		}
-		if (e.getKeyCode()==KeyEvent.VK_V&&player.Height<170) {
+		if (e.getKeyCode()==KeyEvent.VK_V&&player.Height<200) {
 			player.crouch=true;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
-			
+			left2 = true;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			right2 = true;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
+			down2 = true;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_NUMPAD2) {
+			player2.fist2=true;
 		}
 	}
 	
@@ -196,9 +206,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if(left==true) {
 			player.left();
 		}
-	//	if(punch==true) {
-		//	player.punch();
-		///	}
+		if(left2==true) {
+			player2.left();
+		}
+		if(right2==true) {
+			player2.right();
+		}
+		if(down2==true) {
+			player2.down();
+		}
 	
 	}
 	public void jump() {
@@ -230,7 +246,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		}
 		if (e.getKeyCode()==KeyEvent.VK_S) {
 			down=false;
-			player.Height=170;
+			player.Height=200;
 			player.Y=300;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_C) {
@@ -238,6 +254,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		}
 		if (e.getKeyCode()==KeyEvent.VK_V) {
 			player.crouch=false;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+			left2 = false;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			right2 = false;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
+			down2=false;
+			player2.Height2=200;
+			player2.Y2=300;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_NUMPAD2) {
+			player2.fist2=false;
 		}
 		
 	}

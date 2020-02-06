@@ -6,7 +6,6 @@ import java.awt.event.KeyEvent;
 
 public class PlayerOne extends GameObjectB {
 	boolean fist = false;
-	boolean lfist = false;
 	boolean crouch = false;
 	public boolean up;
 	void draw(Graphics g) {
@@ -16,7 +15,6 @@ public class PlayerOne extends GameObjectB {
     	g.fillRect(X+5, Y+5, Width-10, Height-10);
     	g.setColor(Color.RED);
     	g.fillRect(X+5, Y+15, Width-10, 20);
-    	//punch(g);
     	if(fist==true) {
     		g.setColor(Color.BLACK);
         	g.fillRect(X+130, Y+80, 90, 50);
@@ -28,10 +26,8 @@ public class PlayerOne extends GameObjectB {
         	g.setColor(Color.WHITE);
         	g.fillRect(X+125, Y+40, 90, 40);
         	g.fillRect(X+125, Y+35, 40, 40);
-        	
-        	
     	}
-    	if(Height<170) {
+    	if(Height<200) {
     	fist = false;
     	}
 	}
@@ -54,7 +50,7 @@ public class PlayerOne extends GameObjectB {
 
 	public void down() {
 		Height=85;
-		Y=385;
+		Y=415;
 		
 	}
 
@@ -71,7 +67,7 @@ public void punch(Graphics g) {
 }
 	
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode()==KeyEvent.VK_C&&Height<170) {
+		if (e.getKeyCode()==KeyEvent.VK_C&&Height<200) {
 			fist=true;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_V) {
