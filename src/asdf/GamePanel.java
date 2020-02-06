@@ -24,13 +24,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	boolean left;
 	boolean right;
 	boolean punch;
+	boolean up2;
+	boolean down2;
+	boolean left2;
+	boolean right2;
 	float YVelocity = 0;
 	double gravity = .2;
 	boolean jEnd = false;
 	int currentState = MENU;
 	Timer frameDraw;
 	PlayerOne player = new PlayerOne(150, 300, 170, 170);
-	PlayerTwo player2 = new PlayerTwo(500, 300, 170, 170);
+	PlayerTwo player2 = new PlayerTwo(550, 300, 170, 170);
     ObjectManagerB objectmanB = new ObjectManagerB(player);
     ObjectManagerB2 objectmanB2 = new ObjectManagerB2(player2);
     
@@ -173,6 +177,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		}
 		if (e.getKeyCode()==KeyEvent.VK_V&&player.Height<170) {
 			player.crouch=true;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+			
 		}
 	}
 	
