@@ -2,6 +2,7 @@ package asdf;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 public class PlayerOne extends GameObjectB {
@@ -17,15 +18,15 @@ public class PlayerOne extends GameObjectB {
     	g.fillRect(X+5, Y+15, Width-10, 20);
     	if(fist==true) {
     		g.setColor(Color.BLACK);
-        	g.fillRect(X+130, Y+80, 90, 50);
+        	g.fillRect(X+180, Y+60, 90, 50);
         	g.setColor(Color.WHITE);
-        	g.fillRect(X+125, Y+85, 90, 40);
+        	g.fillRect(X+175, Y+65, 90, 40);
     	} else if (crouch==true) {
     		g.setColor(Color.BLACK);
-        	g.fillRect(X+130, Y+35, 90, 50);
+        	g.fillRect(X+180, Y+35, 90, 50);
         	g.setColor(Color.WHITE);
-        	g.fillRect(X+125, Y+40, 90, 40);
-        	g.fillRect(X+125, Y+35, 40, 40);
+        	g.fillRect(X+175, Y+40, 90, 40);
+        	//g.fillRect(X+175, Y+35, 40, 40);
     	}
     	if(Height<200) {
     	fist = false;

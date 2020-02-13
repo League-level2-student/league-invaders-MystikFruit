@@ -34,6 +34,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	boolean jEnd = false;
 	int currentState = MENU;
 	Timer frameDraw;
+	Timer puncht;
 	PlayerOne player = new PlayerOne(150, 300, 200, 200);
 	PlayerTwo player2 = new PlayerTwo(550, 300, 200, 200);
     ObjectManagerB objectmanB = new ObjectManagerB(player);
@@ -41,8 +42,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     
 	   public GamePanel(){
 		   frameDraw = new Timer(1000/60,this);
-		    frameDraw.start();  
-	   }
+		    frameDraw.start();
+		  // puncht = new Timer(/1000,this);
+		   	}
+	   
 	Font Start = new Font("Arial", Font.PLAIN, 24);
 	
 	public void paintComponent(Graphics g) {
@@ -90,7 +93,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.drawString("Press SHIFT for instructions", 290, 490);
 	}
 	void drawEnd(Graphics g) {
-		
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, 900, 600);
 	}
 	void drawInstruct(Graphics g) {
 		g.setColor(Color.WHITE);
@@ -114,6 +118,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	player2.update();
 	player.update();
 		move();
+	
 	}
 	void updateEnd() {
 		
@@ -175,9 +180,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 		if (e.getKeyCode()==KeyEvent.VK_C) {
 			player.fist=true;
+		//	puncht.start();
 		}
+		
 		if (e.getKeyCode()==KeyEvent.VK_V&&player.Height<200) {
 			player.crouch=true;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_O&&player2.Height2<200) {
+			player2.crouch2=true;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
 			left2 = true;
@@ -188,7 +198,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
 			down2 = true;
 		}
-		if (e.getKeyCode()==KeyEvent.VK_NUMPAD2) {
+		if (e.getKeyCode()==KeyEvent.VK_P) {
 			player2.fist2=true;
 		}
 	}
@@ -255,6 +265,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_V) {
 			player.crouch=false;
 		}
+		if (e.getKeyCode()==KeyEvent.VK_O) {
+			player2.crouch2=false;
+		}
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
 			left2 = false;
 		}
@@ -266,7 +279,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			player2.Height2=200;
 			player2.Y2=300;
 		}
-		if (e.getKeyCode()==KeyEvent.VK_NUMPAD2) {
+		if (e.getKeyCode()==KeyEvent.VK_P) {
 			player2.fist2=false;
 		}
 		

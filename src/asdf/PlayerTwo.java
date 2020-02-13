@@ -17,15 +17,15 @@ public class PlayerTwo extends GameObjectB2 {
 		g.fillRect(X2+5, Y2+15, Width2-10, 20);
 		if(fist2==true) {
 			g.setColor(Color.BLACK);
-			g.fillRect(X2-50, Y2+80, 90, 50);
+			g.fillRect(X2-70, Y2+60, 90, 50);
 			g.setColor(Color.WHITE);
-			g.fillRect(X2-45, Y2+85, 90, 40);
+			g.fillRect(X2-65, Y2+65, 90, 40);
 		} else if (crouch2==true) {
 			g.setColor(Color.BLACK);
-			g.fillRect(X2+130, Y2+35, 90, 50);
+			g.fillRect(X2-70, Y2+35, 90, 50);
 			g.setColor(Color.WHITE);
-			g.fillRect(X2+125, Y2+40, 90, 40);
-			g.fillRect(X2+125, Y2+35, 40, 40);  	
+			g.fillRect(X2-65, Y2+40, 90, 40);
+			//g.fillRect(X2-90, Y2+35, 40, 40);  	
 		}
 		if(Height2<200) {
 		fist2 = false;
@@ -59,11 +59,11 @@ public class PlayerTwo extends GameObjectB2 {
 	}
 	
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode()==KeyEvent.VK_NUMPAD2&&Height2<200) {
+		if (e.getKeyCode()==KeyEvent.VK_P&&Height2<200) {
 			fist2=true;
 			System.out.println(123);
 		}
-		if (e.getKeyCode()==KeyEvent.VK_V) {
+		if (e.getKeyCode()==KeyEvent.VK_O) {
 			crouch2 = true;
 			System.out.println("met");
 		}

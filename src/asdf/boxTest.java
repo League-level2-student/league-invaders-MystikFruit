@@ -1,6 +1,7 @@
 package asdf;
 
 import java.awt.Component;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 
