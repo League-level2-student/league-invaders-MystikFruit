@@ -37,13 +37,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Timer puncht;
 	PlayerOne player = new PlayerOne(150, 300, 200, 200);
 	PlayerTwo player2 = new PlayerTwo(550, 300, 200, 200);
-    ObjectManagerB objectmanB = new ObjectManagerB(player);
-    ObjectManagerB2 objectmanB2 = new ObjectManagerB2(player2);
+    ObjectManagerB objectmanB = new ObjectManagerB(player, player2);
     
 	   public GamePanel(){
 		   frameDraw = new Timer(1000/60,this);
 		    frameDraw.start();
-		  // puncht = new Timer(/1000,this);
 		   	}
 	   
 	Font Start = new Font("Arial", Font.PLAIN, 24);
@@ -60,13 +58,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		}
 	}
 	void drawGame(Graphics g) {
-		YVelocity += gravity;
-		player.Y = (int) (player.Y + YVelocity);
-	//	player2.Y2 = (int) (player2.Y2 + YVelocity); 
-		if(player.Y>300) {
-			gravity = 0;
-			YVelocity = 0;
-		}
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, 900, 600);
 		g.setColor(Color.BLACK);
@@ -82,7 +73,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.setColor(Color.GREEN);
 		g.fillRect(585, 25, 290, 40 );
 		objectmanB.draw(g);
-		objectmanB2.draw2(g);
 	}
 	void drawMenu(Graphics g) {
 		g.setColor(Color.WHITE);
@@ -162,9 +152,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 				currentState = MENU;
 			}
 		}
-		if (e.getKeyCode()==KeyEvent.VK_W) {
-			player.up=true;
-		}
 		
 		if (e.getKeyCode()==KeyEvent.VK_S) {
 			down = true;
@@ -204,9 +191,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	public void move() {
-		if (up==true) {
-			jump();
-		}
 		if (down==true) {
 			player.down();
 		}
@@ -227,21 +211,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		}
 	
 	}
-	public void jump() {
-		if(player.Y<=100) {
-			jEnd = true;
-		}
-		if(jEnd = true) {
-			gravity = .2; 
-			YVelocity = 1;
-		}
-		YVelocity = -7;
-		if(player.Y>300) {
-			gravity = 0;
-			YVelocity = 0;
-			jEnd = false;
-		}
-	}
 	
 	@Override
 	public void keyReleased(KeyEvent e) {
@@ -251,9 +220,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_D) {
 			right=false;
 		}
-		if (e.getKeyCode()==KeyEvent.VK_W) {
-			up=false;
-		}
+
 		if (e.getKeyCode()==KeyEvent.VK_S) {
 			down=false;
 			player.Height=200;

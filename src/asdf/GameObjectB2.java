@@ -1,5 +1,7 @@
 package asdf;
 
+import java.awt.Rectangle;
+
 public class GameObjectB2 {
 	int X2;
 	int Y2;
@@ -13,8 +15,13 @@ public class GameObjectB2 {
 		this.Height2=Height;
 		speed = 5;
 	}
-
-	public void update() {
-		
-	}
-	}
+	Rectangle fistC2 = new Rectangle();
+	Rectangle lfist2 = new Rectangle();
+	Rectangle Box2 = new Rectangle();
+	
+public void update() {
+	fistC2.setBounds(X2-70, X2+65, 90, 50);
+	lfist2.setBounds(X2-70, Y2+40, 90, 50);
+	Box2.setBounds(X2, Y2, Width2, Height2);	
+}
+}
