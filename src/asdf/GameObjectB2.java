@@ -20,8 +20,11 @@ public class GameObjectB2 {
 	Rectangle Box2 = new Rectangle();
 	
 public void update() {
-	fistC2.setBounds(X2-70, X2+65, 90, 50);
 	lfist2.setBounds(X2-70, Y2+40, 90, 50);
 	Box2.setBounds(X2, Y2, Width2, Height2);	
+}
+
+public void updateF2() {
+	fistC2.setBounds(X2-70, X2+65, 90, 50);
 }
 }

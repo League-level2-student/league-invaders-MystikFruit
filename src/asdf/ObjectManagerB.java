@@ -25,5 +25,20 @@ PlayerTwo player2;
 	public void update() {
 		player.update();
 		player2.update();
+	
+	}
+	
+	public void checkCollision() {
+		if(player.Box.intersects(player2.Box2)){
+			player.right = false;
+			player2.left2 = false;
+	}
+		if(player.Box.intersects(player2.fistC2)) {
+			player.X +=-30;
+			
+		}
+		if(player2.Box2.intersects(player.fistC)) {
+			player2.X2 +=+30;
+		}
 	}
 }

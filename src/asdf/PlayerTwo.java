@@ -8,6 +8,11 @@ public class PlayerTwo extends GameObjectB2 {
 	boolean fist2 = false;
 	boolean crouch2 = false;
 	public boolean up;
+	boolean up2;
+	boolean down2;
+	boolean left2;
+	boolean right2;
+	boolean punch2;
 	void draw(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(X2, Y2, Width2, Height2);

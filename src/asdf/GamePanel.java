@@ -19,19 +19,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	final int MENU = 0;
 	final int GAME = 1;
 	final int END = 2;
-	boolean up;
-	boolean down;
-	boolean left;
-	boolean right;
-	boolean punch;
-	boolean up2;
-	boolean down2;
-	boolean left2;
-	boolean right2;
-	boolean punch2;
-	float YVelocity = 0;
-	double gravity = .2;
-	boolean jEnd = false;
+	int Health1 = 290;
 	int currentState = MENU;
 	Timer frameDraw;
 	Timer puncht;
@@ -61,18 +49,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, 900, 600);
 		g.setColor(Color.BLACK);
-		g.fillRect(20, 20, 300, 50 );
+		g.fillRect(20, 20, 300, 50);
 		g.setColor(Color.RED);
 		g.fillRect(25,25, 290, 40);
 		g.setColor(Color.GREEN);
-		g.fillRect(25, 25, 290, 40 );
+		g.fillRect(25, 25, 290, 40);
 		g.setColor(Color.BLACK);
-		g.fillRect(580, 20, 300, 50 );
+		g.fillRect(580, 20, 300, 50);
 		g.setColor(Color.RED);
 		g.fillRect(585,25, 290, 40);
 		g.setColor(Color.GREEN);
-		g.fillRect(585, 25, 290, 40 );
+		g.fillRect(585, 25, 290, 40);
 		objectmanB.draw(g);
+		updateGame();
 	}
 	void drawMenu(Graphics g) {
 		g.setColor(Color.WHITE);
@@ -105,9 +94,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 	}
 	void updateGame() {
+	objectmanB.checkCollision();
 	player2.update();
 	player.update();
 		move();
+	
 	
 	}
 	void updateEnd() {
@@ -154,20 +145,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		}
 		
 		if (e.getKeyCode()==KeyEvent.VK_S) {
-			down = true;
+			player.down = true;
 		}
 		
 		if (e.getKeyCode()==KeyEvent.VK_D) {
-			right = true;
+			player.right = true;
 		}
 		
 		if (e.getKeyCode()==KeyEvent.VK_A) {
-			left=true;
+			player.left=true;
 		}
 		
 		if (e.getKeyCode()==KeyEvent.VK_C) {
 			player.fist=true;
-		//	puncht.start();
+			player.updateF();
 		}
 		
 		if (e.getKeyCode()==KeyEvent.VK_V&&player.Height<200) {
@@ -177,36 +168,37 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			player2.crouch2=true;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
-			left2 = true;
+			player2.left2 = true;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
-			right2 = true;
+			player2.right2 = true;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
-			down2 = true;
+			player2.down2 = true;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_P) {
 			player2.fist2=true;
+			player2.updateF2();
 		}
 	}
 	
 	public void move() {
-		if (down==true) {
+		if (player.down==true) {
 			player.down();
 		}
-		if (right==true) {
+		if (player.right==true) {
 			player.right();
 		}
-		if(left==true) {
+		if(player.left==true) {
 			player.left();
 		}
-		if(left2==true) {
+		if(player2.left2==true) {
 			player2.left();
 		}
-		if(right2==true) {
+		if(player2.right2==true) {
 			player2.right();
 		}
-		if(down2==true) {
+		if(player2.down2==true) {
 			player2.down();
 		}
 	
@@ -215,14 +207,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode()==KeyEvent.VK_A) {
-			left=false;
+			player.left=false;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_D) {
-			right=false;
+			player.right=false;
 		}
 
 		if (e.getKeyCode()==KeyEvent.VK_S) {
-			down=false;
+			player.down=false;
 			player.Height=200;
 			player.Y=300;
 		}
@@ -236,13 +228,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			player2.crouch2=false;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
-			left2 = false;
+			player2.left2 = false;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
-			right2 = false;
+			player2.right2 = false;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
-			down2=false;
+			player2.down2=false;
 			player2.Height2=200;
 			player2.Y2=300;
 		}

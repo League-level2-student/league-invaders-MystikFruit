@@ -19,9 +19,12 @@ Rectangle fistC = new Rectangle();
 Rectangle lfist = new Rectangle();
 Rectangle Box = new Rectangle();
 
-public void update() {
-	fistC.setBounds(X+180, Y+65, 90, 50);
+public void update() {	
 	lfist.setBounds(X+180, Y+35, 90, 50);
 	Box.setBounds(X, Y, Width, Height);
+}
+
+public void updateF() {
+	fistC.setBounds(X+180, Y+65, 90, 50);
 }
 }
