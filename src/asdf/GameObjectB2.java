@@ -25,6 +25,6 @@ public void update() {
 }
 
 public void updateF2() {
-	fistC2.setBounds(X2-70, X2+65, 90, 50);
+	fistC2.setBounds(X2-70, Y2+65, 90, 50);
 }
 }

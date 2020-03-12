@@ -27,4 +27,8 @@ public void update() {
 public void updateF() {
 	fistC.setBounds(X+180, Y+65, 90, 50);
 }
+
+public void updateLF(){
+	
+	}
 }

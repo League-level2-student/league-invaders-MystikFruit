@@ -19,7 +19,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	final int MENU = 0;
 	final int GAME = 1;
 	final int END = 2;
-	int Health1 = 290;
 	int currentState = MENU;
 	Timer frameDraw;
 	Timer puncht;
@@ -28,7 +27,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     ObjectManagerB objectmanB = new ObjectManagerB(player, player2);
     
 	   public GamePanel(){
+		   
 		   frameDraw = new Timer(1000/60,this);
+		   puncht = new Timer(1000, this);
+		   
 		    frameDraw.start();
 		   	}
 	   
@@ -48,18 +50,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	void drawGame(Graphics g) {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, 900, 600);
-		g.setColor(Color.BLACK);
-		g.fillRect(20, 20, 300, 50);
-		g.setColor(Color.RED);
-		g.fillRect(25,25, 290, 40);
-		g.setColor(Color.GREEN);
-		g.fillRect(25, 25, 290, 40);
-		g.setColor(Color.BLACK);
-		g.fillRect(580, 20, 300, 50);
-		g.setColor(Color.RED);
-		g.fillRect(585,25, 290, 40);
-		g.setColor(Color.GREEN);
-		g.fillRect(585, 25, 290, 40);
 		objectmanB.draw(g);
 		updateGame();
 	}
@@ -108,6 +98,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 	}
 	public void actionPerformed(ActionEvent arg0) {
+		if(arg0.getSource()==frameDraw) {	
 			if(currentState == MENU){
 			    updateMenu();
 			}else if(currentState == GAME){
@@ -118,7 +109,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 				updateInstruct();
 			}
 			repaint();
+		} else if(arg0.getSource()==puncht){
+			player.fist = false;
 		}
+	}
 
 	void startGame() {
 		
@@ -159,6 +153,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_C) {
 			player.fist=true;
 			player.updateF();
+			puncht.start();
 		}
 		
 		if (e.getKeyCode()==KeyEvent.VK_V&&player.Height<200) {
@@ -219,7 +214,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			player.Y=300;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_C) {
-			player.fist=false;
+
 		}
 		if (e.getKeyCode()==KeyEvent.VK_V) {
 			player.crouch=false;
